@@ -1,0 +1,40 @@
+<!-- author ben lawson (balawson@bu.edu) -->
+<!doctype html>
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+
+<title>Photoshare</title>
+
+{% if userInfo %}
+  <h1>Hello {{ userInfo[0][1] }} {{ userInfo[0][2] }}!</h1>
+  <img src='data:image/png;base64, {{userInfo[0][3]}}' height="15%" width="15%"/><br>
+
+  <form method="post" enctype="multipart/form-data" action="/profile">
+      <label for="profile_pic">Change Profile Picture </label>
+      <input type="file" name="profile_pic" />
+      <input type="submit" value="Change" />
+  </form>
+  <br>Name: {{ userInfo[0][1] }} {{ userInfo[0][2] }}
+  <br>Email: {{ userInfo[0][0] }}
+  <br>Date of Birth: {{ userInfo[0][4] }}
+  <br>Gender: {{ userInfo[0][6] }}
+  <br>Hometown: {{ userInfo[0][5] }}
+{% endif %}
+
+{% if message is none %}
+  <p>You should <a href='/login'>login!</a></p>
+{% else %}
+  <p> Go to <a href='/profile'>profile?</a></p>
+{% endif %}
+
+<ul>
+<li><a href='/'>Home</a></li>
+<li><a href='/friends'>My Friends</a></li>
+<li><a href='/upload'>Upload Photos</a> </li>
+<li><a href='/albums'>View Albums</a></li>
+<li><a href='/myphotos'>View My Photos</a></li>
+<li><a href='/allphotos'>View All Photos</a></li>
+<li><a href='/recommendphotos'>You May Also Like</a> </li>
+<li><a href='/logout'>Logout</a></li>
+</ul>

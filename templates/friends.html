@@ -1,0 +1,34 @@
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+
+<form action="/friends" method="POST"> <!-- action is where to send information -->
+  <label for="search">Search for Friends</label><br>
+  <input type="text" class="form-control" placeholder="Email" name="email" required='true'>
+  <input type="submit" name="Search" /> <!-- Execute the action -->
+</form>
+
+{% if userInfo %}
+  <h2>Here's the result</h2>
+  <ul>
+      Name: {{userInfo[0][0]}} {{userInfo[0][1]}}
+          <form action="/friends" method="POST"> <!-- action is where to send information -->
+            <input type="text" value={{userInfo[0][2]}} name="friendemail" hidden="True"/>
+            <input type="submit" value="Add Friend">
+          </form>
+      </ul>
+{% endif %}
+
+{% if friends %}
+<h2>Here are your friends</h2>
+<ul>
+    {% for friend in friends %}
+        <li>Name: {{friend[0]}} {{friend[1]}}
+          <br>email: {{friend[2]}}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+
+<br><a href='/'>Home</a>
+<br><a href='/profile'>Profile</a></p>

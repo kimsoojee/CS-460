@@ -1,0 +1,38 @@
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+
+{% if albums %}
+  <h1>Here are your Albums</h1>
+  Click an album title to see your photos
+  <ul>
+      {% for album in albums %}
+      <li>{{album[0]}}</li>
+        <form method="post" action="/myphotos" style ='float: left;'>
+          <input type="text" value={{album[0]}} name="photos_title" hidden="True" />
+          <input type="submit" value="Photos" />
+        </form>
+        <form method="post" action="/albums">
+              <input type="text" value={{album[0]}} name="deletetitle" hidden="True" />
+              <input type="submit" value="Delete" />
+        </form>
+      {% endfor %}
+      </ul>
+{% endif %}
+
+<body>
+    <div class="title">
+        <h2>Create an Album</h2>
+    </div>
+        <form method="POST" action="/albums">
+            <label for="title">Album Title:</label>
+            <input type="text" name="createtitle" required='true' />
+            <input type="submit" value="Create" />
+        </form>
+</body>
+
+
+<br><a href='/'>Home</a>
+<br><a href='/upload'>Upload Photo</a>
+<br><a href='/myphotos'>View My Photos</a>
+<br><a href='/profile'>Profile</a></p>

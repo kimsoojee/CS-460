@@ -1,0 +1,78 @@
+<!-- author ben lawson balawson@bu.edu -->
+<head>
+    <title>Create an account!</title>
+</head>
+{%if not supress%}
+<h1> Email already in use! Use another one or <a href="/login">login</a></h1>
+{% endif %}
+    <body>
+        <div class="title">
+            <h1>Enter your information below</h1>
+        </div>
+
+        <div id="content">
+
+            <form method="post" enctype="multipart/form-data" action="{{ url_for('register_user') }}">
+                <div class="form-group">
+                  <label for="profile_pic"> Upload your profile picture </label><br>
+                  <input type="radio" id="option1" name="upload" value="default" required='true'>
+                  <label for="option1">Default</label><br>
+                  <input type="radio" id="option2" name="upload" value="upload" >
+                  <label for="option2">Upload</label><br>
+                  <input type="file" name="profile_pic" id="required_later" disabled><br>
+                </div>
+
+                <div class="form-group" id="#signup-form">
+    							  <input type="text" class="form-control" placeholder="*First Name" name="firstname" style="text-transform:uppercase;" required='true'>
+    						</div>
+
+    						<div class="form-group">
+    							  <input type="text" class="form-control" placeholder="*Last Name" name="lastname" style="text-transform:uppercase;" required='true'>
+    						</div>
+
+                <div class="form-group">
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="*Email" name="email" required='true'>
+                </div>
+
+                <div class="form-group">
+    							  <input type="date" class="form-control" placeholder="date of birth (format:1994-12-12)" name="date_birth" required='true'>
+    						</div>
+
+                <div class="form-group">
+    							  <input type="text" class="form-control" placeholder="Hometown" name="bio" style="text-transform:uppercase;">
+    						</div>
+
+                <div class="form-group" >
+      							<input type="radio" class="form-control" placeholder="Gender" name="gender" value = "Female">Female<br>
+      							<input type="radio" class="form-control" placeholder="Gender" name="gender" value = "Male">Male<br>
+      							<input type="radio" class="form-control" placeholder="Gender" name="gender" value = "Secret">Secret<br>
+                </div>
+
+                <div class="form-group">
+    						  	<input type="password" class="form-control" placeholder="*Password" name="password" required='true'>
+    						</div>
+
+                <br><button type="submit" value="Search" class="btn btn-default submit">Sign Up Now!</button>
+            </form>
+
+         </div>
+
+
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <script>
+         $("#option1").click(function() {
+             $("#required_later").prop("required", false);
+             $("#required_later").prop("disabled", true);
+         });
+         $("#option2").click(function() {
+             $("#required_later").prop("required", true);
+             $("#required_later").prop("disabled", false);
+             $("#required_later").focus();
+         });
+     </script>
+
+ </body>
+
+
+
+<a href='/'>Home</a>
